@@ -30,17 +30,9 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Chromium
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list.d/chromium.list \
-    && apt-get update \
-    && apt-get install -y chromium \
+RUN apt-get update && apt-get install -y chromium chromium-driver \
     && rm -rf /var/lib/apt/lists/*
 
-# Install ChromeDriver
-RUN CHROMEDRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
-    && wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
-    && unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/ \
-    && rm /tmp/chromedriver.zip
-
-# Set the environment variable for ChromeDriver
+# Set the environment variable for Chromium and ChromeDriver
 ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
