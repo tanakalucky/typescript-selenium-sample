@@ -1,0 +1,8 @@
+services:
+  typescript-selenium-sample:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    tty: true
