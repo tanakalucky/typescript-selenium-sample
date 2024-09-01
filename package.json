@@ -11,6 +11,10 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.5.1",
+    "@types/selenium-webdriver": "^4.1.26",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.24.0"
   }
 }
